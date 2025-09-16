@@ -1,0 +1,652 @@
+{
+	"info": {
+		"_postman_id": "7f82cc80-3bb2-4aff-a04c-d1593349770b",
+		"name": "User & Role API",
+		"description": "Collection for User and Role APIs with JWT auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19536232"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"secret123\",\n    \"firstName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"secret123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/users?search=a&skip=0&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "a"
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/68c7fe7018d735586f9f871d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"68c7fe7018d735586f9f871d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By Id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/68c7fe7018d735586f9f871d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"68c7fe7018d735586f9f871d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Detail By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/68c7fe7018d735586f9f871d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"68c7fe7018d735586f9f871d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Update (Same Data)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filter\": { \"role\": \"68c800915884e32e34c9bbf5\" },\n  \"update\": { \"lastName\": \"ABC\" }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/bulk-update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"bulk-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Update (Different Data)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operations\": [\n    { \"filter\": { \"email\": \"admin@example.com\" }, \"update\": { \"firstName\": \"John\" } },\n    { \"filter\": { \"email\": \"admin@example.com\" }, \"update\": { \"role\": \"68c800915884e32e34c9bbf5\" } }\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/bulk-diff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"bulk-diff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/roles?search=Admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role Details By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles/68c800915884e32e34c9bbf5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"68c800915884e32e34c9bbf5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles/68c800915884e32e34c9bbf5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"68c800915884e32e34c9bbf5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Access Module",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"modules\": [\"dashboard\", \"reports\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles/68c800915884e32e34c9bbf5/add-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"68c800915884e32e34c9bbf5",
+								"add-access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Access Module",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"moduleName\": \"reports\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles/68c800915884e32e34c9bbf5/remove-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"68c800915884e32e34c9bbf5",
+								"remove-access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Access",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzdmZTcwMThkNzM1NTg2ZjlmODcxZCIsImlhdCI6MTc1NzkzNzMyOCwiZXhwIjoxNzU4MDIzNzI4fQ.fDeqit3IIf89UCZjbsG61V45kxtp-U8_3MGqwfkT7Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/roles/68c800915884e32e34c9bbf5/has-access?moduleName=dashboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"68c800915884e32e34c9bbf5",
+								"has-access"
+							],
+							"query": [
+								{
+									"key": "moduleName",
+									"value": "dashboard"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
